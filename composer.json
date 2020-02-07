@@ -1,0 +1,38 @@
+{
+    "name": "greenterycam/xml",
+    "description": "XML generación de documentos electrónicos, Facturacion Electrónica SUNAT - Perú",
+    "keywords": ["greenter", "xml", "facturacion electronica"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Giancarlos Salas",
+            "email": "giansalex@gmail.com"
+        },
+        {
+            "name": "Yerson Y. Campos De la cruz",
+            "email": "ycamposde@gmail.com"
+        }
+    ],
+    "homepage": "https://github.com/ycamposde/greenter-xml",
+    "type": "library",
+    "require": {
+		    "php": ">=5.5.9",
+        "greenterycam/core": "^7.0.1",
+        "twig/twig": "~1.0 || ~2.0 || ~3.0"
+    },
+	  "require-dev": {
+        "greenterycam/data": "^7.0.1",
+        "greenter/ubl-validator": "^2.0",
+        "phpunit/phpunit": ">=4.8 < 6.0"
+    },
+	  "autoload": {
+        "psr-4": {
+            "Greenter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Greenter\\": "tests/"
+        }
+    }
+}
