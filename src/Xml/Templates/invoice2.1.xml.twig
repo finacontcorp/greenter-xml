@@ -503,6 +503,12 @@
                 {% if detail.masDetalle %}
                     <cbc:Description><![CDATA[{{ detail.masDetalle|raw }}]]></cbc:Description>
                 {% endif %}
+                {% if detail.almacen %}
+                    <cbc:Description><![CDATA[{{ detail.almacen|raw }}]]></cbc:Description>
+                {% endif %}
+                {% if detail.unidadMedida %}
+                    <cbc:Description><![CDATA[{{ detail.unidadMedida|raw }}]]></cbc:Description>
+                {% endif %}
                 {% if detail.codProducto %}
                     <cac:SellersItemIdentification>
                         <cbc:ID>{{ detail.codProducto }}</cbc:ID>
