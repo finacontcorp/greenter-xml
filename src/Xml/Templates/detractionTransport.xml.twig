@@ -1,0 +1,71 @@
+<cac:Delivery>
+  <cac:DeliveryLocation>
+    <cac:Address>
+      <cbc:ID schemeName="Ubigeos" schemeAgencyName="PE:INEI">{{ transport.destinoUbigueo }}</cbc:ID>
+      <cac:AddressLine>
+        <cbc:Line>{{ transport.destinoDireccion }}</cbc:Line>
+      </cac:AddressLine>
+    </cac:Address>
+  </cac:DeliveryLocation>
+  <cac:Despatch>
+    <cbc:Instructions>{{ transport.detalle }}</cbc:Instructions>
+    <cac:DespatchAddress>
+      <cbc:ID schemeName="Ubigeos" schemeAgencyName="PE:INEI">{{ transport.origenUbigueo }}</cbc:ID>
+      <cac:AddressLine>
+        <cbc:Line>{{ transport.origenDireccion }}</cbc:Line>
+      </cac:AddressLine>
+    </cac:DespatchAddress>
+  </cac:Despatch>
+  <cac:DeliveryTerms>
+    <cbc:ID>01</cbc:ID>
+    <cbc:Amount currencyID="PEN">{{ transport.mtoImpServicio|n_format }}</cbc:Amount>
+  </cac:DeliveryTerms>
+  <cac:DeliveryTerms>
+    <cbc:ID>02</cbc:ID>
+    <cbc:Amount currencyID="PEN">{{ transport.mtoBaseCargaEfectiva|n_format }}</cbc:Amount>
+  </cac:DeliveryTerms>
+  <cac:DeliveryTerms>
+    <cbc:ID>03</cbc:ID>
+    <cbc:Amount currencyID="PEN">{{ transport.mtoBaseCum|n_format }}</cbc:Amount>
+  </cac:DeliveryTerms>
+  <cac:Shipment>
+    <cbc:ID>01</cbc:ID>
+    <cac:Consignment>
+      <cbc:ID>01</cbc:ID>
+      <cbc:CarrierServiceInstructions>{{ transport.descripcionTramo }}</cbc:CarrierServiceInstructions>
+      <cbc:DeclaredForCarriageValueAmount currencyID="PEN">{{ transport.mtoBaseCargaEfectivaOriginal|n_format }}</cbc:DeclaredForCarriageValueAmount>
+      <cac:PlannedPickupTransportEvent>
+        <cac:Location>
+          <cbc:ID schemeName="Ubigeos" schemeAgencyName="PE:INEI">{{ transport.origenUbigueo }}</cbc:ID>
+        </cac:Location>
+      </cac:PlannedPickupTransportEvent>
+      <cac:PlannedDeliveryTransportEvent>
+        <cac:Location>
+          <cbc:ID schemeName="Ubigeos" schemeAgencyName="PE:INEI">{{ transport.destinoUbigueo }}</cbc:ID>
+        </cac:Location>
+      </cac:PlannedDeliveryTransportEvent>
+      <cac:DeliveryTerms>
+        <cbc:Amount currencyID="PEN">{{ transport.mtoBaseCargaEfectiva|n_format }}</cbc:Amount>
+      </cac:DeliveryTerms>
+      <cac:TransportHandlingUnit>
+        <cac:TransportEquipment>
+          <cbc:SizeTypeCode listAgencyName="PE:MTC" listName="Configuracion Vehícular">{{ transport.configuracionVehicular }}</cbc:SizeTypeCode>
+          <cbc:ReturnabilityIndicator>false</cbc:ReturnabilityIndicator>
+          <cac:Delivery>
+            <cac:DeliveryTerms>
+              <cbc:Amount currencyID="PEN">{{ transport.mtoReferencialTM|n_format }}</cbc:Amount>
+            </cac:DeliveryTerms>
+          </cac:Delivery>
+        </cac:TransportEquipment>
+        <cac:MeasurementDimension>
+          <cbc:AttributeID>01</cbc:AttributeID>
+          <cbc:Measure unitCode="TNE">{{ transport.cargaUtilTM }}</cbc:Measure>
+        </cac:MeasurementDimension>
+        <cac:MeasurementDimension>
+          <cbc:AttributeID>02</cbc:AttributeID>
+          <cbc:Measure unitCode="TNE">{{ transport.cargaEfectivaTM }}</cbc:Measure>
+        </cac:MeasurementDimension>
+      </cac:TransportHandlingUnit>
+    </cac:Consignment>
+  </cac:Shipment>
+</cac:Delivery>

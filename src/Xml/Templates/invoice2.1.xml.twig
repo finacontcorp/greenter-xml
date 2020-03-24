@@ -416,6 +416,8 @@
                     </cac:AlternativeConditionPrice>
                 {% endif %}
             </cac:PricingReference>
+            {% set transport = detail.detractionTransport %}
+            {% include 'detractionTransport.xml.twig' %}
             {% if detail.cargos %}
                 {% for cargo in detail.cargos %}
                     <cac:AllowanceCharge>
