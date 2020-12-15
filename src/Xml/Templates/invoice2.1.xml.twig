@@ -219,6 +219,26 @@
             <cbc:Amount currencyID="PEN">{{ doc.perception.mtoTotal|n_format }}</cbc:Amount>
         </cac:PaymentTerms>
     {% endif %}
+    {% set formaPago = doc.formaPago %}
+    {% if doc.formaPago %}
+        <cac:PaymentTerms>
+            <cbc:ID>FormaPago</cbc:ID>
+            <cbc:PaymentMeansID>{{ doc.formaPago.condicion }}</cbc:PaymentMeansID>
+            {% if doc.formaPago.condicion == 'Credito' %}
+                <cbc:Amount currencyID="{{ doc.tipoMoneda }}">{{ doc.formaPago.mtoNetoPendientePago|n_format }}</cbc:Amount>
+            {% endif %}
+        </cac:PaymentTerms>
+    {% endif %}
+    {% if formaPago.details %}
+        {% for forma in formaPago.details %}
+            <cac:PaymentTerms>
+                <cbc:ID>FormaPago</cbc:ID>
+                <cbc:PaymentMeansID>{{ forma.cuotaFormato }}</cbc:PaymentMeansID>
+                <cbc:Amount currencyID="{{ doc.tipoMoneda }}">{{ forma.mtoPagoUnicoCuotas|n_format }}</cbc:Amount>
+                <cbc:PaymentDueDate>{{ forma.fechaVencimiento|date('Y-m-d') }}</cbc:PaymentDueDate>
+            </cac:PaymentTerms>
+        {% endfor %}
+    {% endif %}
     {% if doc.anticipos %}
         {% for ant in doc.anticipos %}
             <cac:PrepaidPayment>
