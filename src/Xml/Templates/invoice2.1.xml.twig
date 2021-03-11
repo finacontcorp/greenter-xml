@@ -406,9 +406,7 @@
     </cac:TaxTotal>
     <cac:LegalMonetaryTotal>
         <cbc:LineExtensionAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.valorVenta|n_format }}</cbc:LineExtensionAmount>
-        {% if doc.precioVentaTotal %}
-            <cbc:TaxInclusiveAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.precioVentaTotal|n_format }}</cbc:TaxInclusiveAmount>
-        {% endif %}
+        <cbc:TaxInclusiveAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.precioVentaTotal|n_format }}</cbc:TaxInclusiveAmount>
         {% if doc.mtoDescuentos %}
             <cbc:AllowanceTotalAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoDescuentos|n_format }}</cbc:AllowanceTotalAmount>
         {% endif %}
