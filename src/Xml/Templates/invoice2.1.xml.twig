@@ -511,8 +511,8 @@
                     <cac:TaxSubtotal>
                         <cbc:TaxAmount currencyID="{{ doc.tipoMoneda }}">{{ detail.icbper|n_format }}</cbc:TaxAmount>
                         <cbc:BaseUnitMeasure unitCode="NIU">{{ detail.cantidad }}</cbc:BaseUnitMeasure>
-                        <cbc:PerUnitAmount currencyID="{{ doc.tipoMoneda }}">{{ detail.factorIcbper|n_format }}</cbc:PerUnitAmount>
                         <cac:TaxCategory>
+                            <cbc:PerUnitAmount currencyID="{{ doc.tipoMoneda }}">{{ detail.factorIcbper|n_format }}</cbc:PerUnitAmount>
                             <cac:TaxScheme>
                                 <cbc:ID schemeAgencyName="PE:SUNAT" schemeID="UN/ECE 5153" schemeName="Codigo de tributos">7152</cbc:ID>
                                 <cbc:Name>ICBPER</cbc:Name>
