@@ -19,7 +19,11 @@
     <cbc:CustomizationID>2.0</cbc:CustomizationID>
     <cbc:ID>{{ doc.serie }}-{{ doc.correlativo }}</cbc:ID>
     <cbc:IssueDate>{{ doc.fechaEmision|date('Y-m-d') }}</cbc:IssueDate>
-    <cbc:IssueTime>{{ doc.fechaEmision|date('H:i:s') }}</cbc:IssueTime>
+    {% if doc.IssueTime %}
+        <cbc:IssueTime>{{ doc.IssueTime }}</cbc:IssueTime>
+    {% else %}
+        <cbc:IssueTime>{{ doc.fechaEmision|date('H:i:s') }}</cbc:IssueTime>
+    {% endif %}
     {% if doc.fecVencimiento %}
         <cbc:DueDate>{{ doc.fecVencimiento|date('Y-m-d') }}</cbc:DueDate>
     {% endif %}
