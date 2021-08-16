@@ -14,11 +14,7 @@
     <cbc:CustomizationID>2.0</cbc:CustomizationID>
     <cbc:ID>{{ doc.serie }}-{{ doc.correlativo }}</cbc:ID>
     <cbc:IssueDate>{{ doc.fechaEmision|date('Y-m-d') }}</cbc:IssueDate>
-    {% if doc.IssueTime %}
-        <cbc:IssueTime>{{ doc.IssueTime }}</cbc:IssueTime>
-    {% else %}
-        <cbc:IssueTime>{{ doc.fechaEmision|date('H:i:s') }}</cbc:IssueTime>
-    {% endif %}
+    <cbc:IssueTime>{{ doc.horaEmision }}</cbc:IssueTime>
     {% for leg in doc.legends %}
         <cbc:Note languageLocaleID="{{ leg.code }}"><![CDATA[{{ leg.value }}]]></cbc:Note>
     {% endfor %}

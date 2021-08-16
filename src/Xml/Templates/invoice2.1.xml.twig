@@ -19,11 +19,7 @@
     <cbc:CustomizationID>2.0</cbc:CustomizationID>
     <cbc:ID>{{ doc.serie }}-{{ doc.correlativo }}</cbc:ID>
     <cbc:IssueDate>{{ doc.fechaEmision|date('Y-m-d') }}</cbc:IssueDate>
-    {% if doc.IssueTime %}
-        <cbc:IssueTime>{{ doc.IssueTime }}</cbc:IssueTime>
-    {% else %}
-        <cbc:IssueTime>{{ doc.fechaEmision|date('H:i:s') }}</cbc:IssueTime>
-    {% endif %}
+    <cbc:IssueTime>{{ doc.horaEmision }}</cbc:IssueTime>
     {% if doc.fecVencimiento %}
         <cbc:DueDate>{{ doc.fecVencimiento|date('Y-m-d') }}</cbc:DueDate>
     {% endif %}
@@ -304,7 +300,7 @@
                 </cac:TaxCategory>
             </cac:TaxSubtotal>
         {% endif %}
-        {% if doc.mtoOperGravadas %}
+        {% if doc.mtoOperGravadas or doc.anticipos %}
             <cac:TaxSubtotal>
                 <cbc:TaxableAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoOperGravadas|n_format }}</cbc:TaxableAmount>
                 <cbc:TaxAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoIGV|n_format }}</cbc:TaxAmount>
@@ -317,7 +313,7 @@
                 </cac:TaxCategory>
             </cac:TaxSubtotal>
         {% endif %}
-        {% if doc.mtoOperInafectas %}
+        {% if doc.mtoOperInafectas or doc.anticipos %}
             <cac:TaxSubtotal>
                 <cbc:TaxableAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoOperInafectas|n_format }}</cbc:TaxableAmount>
                 <cbc:TaxAmount currencyID="{{ doc.tipoMoneda }}">0.00</cbc:TaxAmount>
@@ -330,7 +326,7 @@
                 </cac:TaxCategory>
             </cac:TaxSubtotal>
         {% endif %}
-        {% if doc.mtoOperExoneradas %}
+        {% if doc.mtoOperExoneradas or doc.anticipos %}
             <cac:TaxSubtotal>
                 <cbc:TaxableAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoOperExoneradas|n_format }}</cbc:TaxableAmount>
                 <cbc:TaxAmount currencyID="{{ doc.tipoMoneda }}">0.00</cbc:TaxAmount>
