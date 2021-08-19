@@ -300,7 +300,7 @@
                 </cac:TaxCategory>
             </cac:TaxSubtotal>
         {% endif %}
-        {% if doc.mtoOperGravadas or or doc.es_gravada %}
+        {% if doc.mtoOperGravadas or doc.es_gravada %}
             <cac:TaxSubtotal>
                 <cbc:TaxableAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoOperGravadas|n_format }}</cbc:TaxableAmount>
                 <cbc:TaxAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoIGV|n_format }}</cbc:TaxAmount>
