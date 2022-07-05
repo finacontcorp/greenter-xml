@@ -179,7 +179,7 @@
                 </cac:TaxCategory>
             </cac:TaxSubtotal>
         {% endif %}
-        {% if doc.mtoOperGravadas %}
+        {% if doc.mtoOperGravadas or doc.es_gravadas %}
             <cac:TaxSubtotal>
                 <cbc:TaxableAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoOperGravadas|n_format }}</cbc:TaxableAmount>
                 <cbc:TaxAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoIGV|n_format }}</cbc:TaxAmount>
@@ -192,7 +192,7 @@
                 </cac:TaxCategory>
             </cac:TaxSubtotal>
         {% endif %}
-        {% if doc.mtoOperInafectas %}
+        {% if doc.mtoOperInafectas or doc.es_inafectas %}
             <cac:TaxSubtotal>
                 <cbc:TaxableAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoOperInafectas|n_format }}</cbc:TaxableAmount>
                 <cbc:TaxAmount currencyID="{{ doc.tipoMoneda }}">0</cbc:TaxAmount>
@@ -205,7 +205,7 @@
                 </cac:TaxCategory>
             </cac:TaxSubtotal>
         {% endif %}
-        {% if doc.mtoOperExoneradas %}
+        {% if doc.mtoOperExoneradas or doc.es_exoneradas %}
             <cac:TaxSubtotal>
                 <cbc:TaxableAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoOperExoneradas|n_format }}</cbc:TaxableAmount>
                 <cbc:TaxAmount currencyID="{{ doc.tipoMoneda }}">0</cbc:TaxAmount>
@@ -218,7 +218,7 @@
                 </cac:TaxCategory>
             </cac:TaxSubtotal>
         {% endif %}
-        {% if doc.mtoOperGratuitas %}
+        {% if doc.mtoOperGratuitas or doc.es_gratuitas %}
             <cac:TaxSubtotal>
                 <cbc:TaxableAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoOperGratuitas|n_format }}</cbc:TaxableAmount>
                 <cbc:TaxAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoTributosGratuitas|n_format }}</cbc:TaxAmount>
@@ -231,7 +231,7 @@
                 </cac:TaxCategory>
             </cac:TaxSubtotal>
         {% endif %}
-        {% if doc.mtoOperExportacion %}
+        {% if doc.mtoOperExportacion or doc.es_exportacion %}
             <cac:TaxSubtotal>
                 <cbc:TaxableAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoOperExportacion|n_format }}</cbc:TaxableAmount>
                 <cbc:TaxAmount currencyID="{{ doc.tipoMoneda }}">0</cbc:TaxAmount>
@@ -244,7 +244,7 @@
                 </cac:TaxCategory>
             </cac:TaxSubtotal>
         {% endif %}
-        {% if doc.mtoIVAP %}
+        {% if doc.mtoIVAP or doc.es_ivap %}
             <cac:TaxSubtotal>
                 <cbc:TaxableAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoBaseIvap|n_format }}</cbc:TaxableAmount>
                 <cbc:TaxAmount currencyID="{{ doc.tipoMoneda }}">{{ doc.mtoIVAP|n_format }}</cbc:TaxAmount>
