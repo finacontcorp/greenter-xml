@@ -25,7 +25,11 @@
     {% endif %}
     <cbc:InvoiceTypeCode listAgencyName="PE:SUNAT" listID="{{ doc.tipoOperacion }}" listName="Tipo de Documento" listSchemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo51" listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo01" name="Tipo de Operacion">{{ doc.tipoDoc }}</cbc:InvoiceTypeCode>
     {% for leg in doc.legends %}
-        <cbc:Note languageLocaleID="{{ leg.code }}"><![CDATA[{{ leg.value }}]]></cbc:Note>
+        {% if leg.code %}
+            <cbc:Note languageLocaleID="{{ leg.code }}"><![CDATA[{{ leg.value }}]]></cbc:Note>
+        {% else %}
+            <cbc:Note CDATA[{{ leg.value }}]]></cbc:Note>
+        {% endif %}
     {% endfor %}
     <cbc:DocumentCurrencyCode listAgencyName="United Nations Economic Commission for Europe" listID="ISO 4217 Alpha" listName="Currency">{{ doc.tipoMoneda }}</cbc:DocumentCurrencyCode>
 
