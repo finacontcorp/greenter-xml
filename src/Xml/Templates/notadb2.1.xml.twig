@@ -16,7 +16,11 @@
     <cbc:IssueDate>{{ doc.fechaEmision|date('Y-m-d') }}</cbc:IssueDate>
     <cbc:IssueTime>{{ doc.horaEmision }}</cbc:IssueTime>
     {% for leg in doc.legends %}
-        <cbc:Note languageLocaleID="{{ leg.code }}"><![CDATA[{{ leg.value }}]]></cbc:Note>
+        {% if leg.code %}
+            <cbc:Note languageLocaleID="{{ leg.code }}"><![CDATA[{{ leg.value }}]]></cbc:Note>
+        {% else %}
+            <cbc:Note CDATA[{{ leg.value }}]]></cbc:Note>
+        {% endif %}
     {% endfor %}
     <cbc:DocumentCurrencyCode listAgencyName="United Nations Economic Commission for Europe" listID="ISO 4217 Alpha" listName="Currency">{{ doc.tipoMoneda }}</cbc:DocumentCurrencyCode>
     <cac:DiscrepancyResponse>
