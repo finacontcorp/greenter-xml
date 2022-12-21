@@ -143,6 +143,25 @@
               </cac:IdentityDocumentReference>
             {% endif %}
           </cac:DriverPerson>
+          {% if envio.transportistaSecundario and envio.transportistaSecundario.tipoChofer %}
+            <cac:DriverPerson>
+              <cbc:ID schemeID="{{ envio.transportistaSecundario.choferTipoDoc }}" schemeName="Documento de Identidad" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06" schemeAgencyName="PE:SUNAT">{{ envio.transportistaSecundario.choferDoc }}</cbc:ID>
+              {% if envio.transportistaSecundario.nameChofer %}
+                <cbc:FirstName>{{ envio.transportistaSecundario.nameChofer }}</cbc:FirstName>
+              {% endif %}
+              {% if envio.transportistaSecundario.apellidoChofer %}
+                <cbc:FamilyName>{{ envio.transportistaSecundario.apellidoChofer }}</cbc:FamilyName>
+              {% endif %}
+              {% if envio.transportistaSecundario.tipoChofer %}
+                <cbc:JobTitle>{{ envio.transportistaSecundario.tipoChofer }}</cbc:JobTitle>
+              {% endif %}
+              {% if envio.transportistaSecundario.numLicenciaChofer %}
+                <cac:IdentityDocumentReference>
+                  <cbc:ID>{{ envio.transportistaSecundario.numLicenciaChofer }}</cbc:ID>
+                </cac:IdentityDocumentReference>
+              {% endif %}
+            </cac:DriverPerson>
+          {% endif %}
         {% endif %}
         {% if envio.modTraslado == "1" %}
           <cac:CarrierParty>
