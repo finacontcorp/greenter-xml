@@ -255,6 +255,21 @@
                 </cbc:RegistrationNationalityID>
               </cac:ApplicableTransportMeans>
             {% endif %}
+            {% for sec in envio.vehiculoSecundarios %}
+              <cac:AttachedTransportEquipment>
+                <cbc:ID>{{ sec.numPlacaVehiculo }}</cbc:ID>
+                {% if sec.tarjetaUnicaCirculacionVehicular %}
+                  <cac:ApplicableTransportMeans>
+                    <cbc:RegistrationNationalityID>{{ sec.tarjetaUnicaCirculacionVehicular }}</cbc:RegistrationNationalityID>
+                  </cac:ApplicableTransportMeans>
+                {% endif %}
+                {% if sec.entidadEmidAutoEspecial %}
+                  <cac:ShipmentDocumentReference>
+                    <cbc:ID schemeID="{{ sec.codigoEntidadEmisora }}" schemeName="Entidad Autorizadora" schemeAgencyName="PE:SUNAT">{{ sec.entidadEmidAutoEspecial }}</cbc:ID>
+                  </cac:ShipmentDocumentReference>
+                {% endif %}
+              </cac:AttachedTransportEquipment>
+            {% endfor %}
             {% if envio.entidadEmidAutoEspecial %}
               <cac:ShipmentDocumentReference>
                 <cbc:ID schemeID="{{ envio.codigoEntidadEmisora }}" schemeName="Entidad Autorizador" schemeAgencyName="PE:SUNAT">{{ envio.entidadEmidAutoEspecial }}</cbc:ID>
