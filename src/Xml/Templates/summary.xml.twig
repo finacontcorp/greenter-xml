@@ -24,10 +24,10 @@
         <cbc:Note><![CDATA[Elaborado por el sistema de facturación electrónica web Contasiscorp]]></cbc:Note>
         <cac:SignatoryParty>
             <cac:PartyIdentification>
-                <cbc:ID>20601131952</cbc:ID>
+                <cbc:ID>{{ emp.ruc }}</cbc:ID>
             </cac:PartyIdentification>
             <cac:PartyName>
-                <cbc:Name><![CDATA[FINACONT CORP SOCIEDAD ANONIMA CERRADA - FINACONT CORP S.A.C.]]></cbc:Name>
+                <cbc:Name><![CDATA[{{ emp.razonSocial|raw }}]]></cbc:Name>
             </cac:PartyName>
         </cac:SignatoryParty>
         <cac:DigitalSignatureAttachment>
