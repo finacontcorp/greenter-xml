@@ -111,7 +111,7 @@
 {#		{% if envio.desTraslado %}#}
 {#			<cbc:Information>{{ envio.desTraslado }}</cbc:Information>#}
 {#		{% endif %}#}
-		<cbc:GrossWeightMeasure unitCode="{{ envio.undPesoTotal }}">{{ envio.pesoTotal|n_format(0) }}</cbc:GrossWeightMeasure>
+		<cbc:GrossWeightMeasure unitCode="{{ envio.undPesoTotal }}">{{ envio.pesoTotal|n_format(3) }}</cbc:GrossWeightMeasure>
 		{% if envio.numBultos %}
 			<cbc:TotalTransportHandlingUnitQuantity>{{ envio.numBultos }}</cbc:TotalTransportHandlingUnitQuantity>
 		{% endif %}
