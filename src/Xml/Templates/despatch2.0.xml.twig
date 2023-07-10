@@ -143,7 +143,7 @@
               </cac:IdentityDocumentReference>
             {% endif %}
           </cac:DriverPerson>
-          {% if envio.transportistaSecundario and envio.transportistaSecundario.tipoChofer %}
+          {% if envio.transportistaSecundario and envio.transportistaSecundario.choferDoc %}
             <cac:DriverPerson>
               <cbc:ID schemeID="{{ envio.transportistaSecundario.choferTipoDoc }}" schemeName="Documento de Identidad" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06" schemeAgencyName="PE:SUNAT">{{ envio.transportistaSecundario.choferDoc }}</cbc:ID>
               {% if envio.transportistaSecundario.nameChofer %}
@@ -158,6 +158,25 @@
               {% if envio.transportistaSecundario.numLicenciaChofer %}
                 <cac:IdentityDocumentReference>
                   <cbc:ID>{{ envio.transportistaSecundario.numLicenciaChofer }}</cbc:ID>
+                </cac:IdentityDocumentReference>
+              {% endif %}
+            </cac:DriverPerson>
+          {% endif %}
+          {% if envio.transportistaTercero and envio.transportistaTercero.choferDoc %}
+            <cac:DriverPerson>
+              <cbc:ID schemeID="{{ envio.transportistaTercero.choferTipoDoc }}" schemeName="Documento de Identidad" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06" schemeAgencyName="PE:SUNAT">{{ envio.transportistaTercero.choferDoc }}</cbc:ID>
+              {% if envio.transportistaTercero.nameChofer %}
+                <cbc:FirstName>{{ envio.transportistaTercero.nameChofer }}</cbc:FirstName>
+              {% endif %}
+              {% if envio.transportistaTercero.apellidoChofer %}
+                <cbc:FamilyName>{{ envio.transportistaTercero.apellidoChofer }}</cbc:FamilyName>
+              {% endif %}
+              {% if envio.transportistaTercero.tipoChofer %}
+                <cbc:JobTitle>{{ envio.transportistaTercero.tipoChofer }}</cbc:JobTitle>
+              {% endif %}
+              {% if envio.transportistaTercero.numLicenciaChofer %}
+                <cac:IdentityDocumentReference>
+                  <cbc:ID>{{ envio.transportistaTercero.numLicenciaChofer }}</cbc:ID>
                 </cac:IdentityDocumentReference>
               {% endif %}
             </cac:DriverPerson>
