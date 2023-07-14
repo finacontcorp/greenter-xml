@@ -203,8 +203,8 @@
             </cac:Party>
         </cac:SellerSupplierParty>
     {% endif %}
-    {% if doc.direccionEntrega %}
-      {% set addr = doc.direccionEntrega %}
+    {% if doc.directionEntrega %}
+      {% set addr = doc.directionEntrega %}
       <cac:Delivery>
         <cac:DeliveryLocation>
           <cac:Address>
@@ -272,16 +272,6 @@
             {% endif %}
         </cac:PaymentTerms>
     {% endif %}
-    {% set ret = doc.retencion %}
-    {% if doc.retencion %}
-        <cac:AllowanceCharge>
-          <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
-          <cbc:AllowanceChargeReasonCode>{{ ret.codReg }}</cbc:AllowanceChargeReasonCode>
-          <cbc:MultiplierFactorNumeric>{{ ret.porcentaje }}</cbc:MultiplierFactorNumeric>
-          <cbc:Amount currencyID="{{ doc.tipoMoneda }}">{{ ret.monto|n_format }}</cbc:Amount>
-          <cbc:BaseAmount currencyID="{{ doc.tipoMoneda }}">{{ ret.montoBase|n_format }}</cbc:BaseAmount>
-        </cac:AllowanceCharge>
-    {% endif %}
     {% if formaPago.details %}
         {% for forma in formaPago.details %}
             <cac:PaymentTerms>
@@ -336,6 +326,16 @@
                 <cbc:Amount currencyID="{{ doc.tipoMoneda }}">{{ perc.mto|n_format }}</cbc:Amount>
                 <cbc:BaseAmount currencyID="{{ doc.tipoMoneda }}">{{ perc.mtoBase|n_format }}</cbc:BaseAmount>
             {% endif %}
+        </cac:AllowanceCharge>
+    {% endif %}
+    {% set ret = doc.retencion %}
+    {% if doc.retencion %}
+        <cac:AllowanceCharge>
+          <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+          <cbc:AllowanceChargeReasonCode>{{ ret.codReg }}</cbc:AllowanceChargeReasonCode>
+          <cbc:MultiplierFactorNumeric>{{ ret.porcentaje }}</cbc:MultiplierFactorNumeric>
+          <cbc:Amount currencyID="{{ doc.tipoMoneda }}">{{ ret.monto|n_format }}</cbc:Amount>
+          <cbc:BaseAmount currencyID="{{ doc.tipoMoneda }}">{{ ret.montoBase|n_format }}</cbc:BaseAmount>
         </cac:AllowanceCharge>
     {% endif %}
     <cac:TaxTotal>
