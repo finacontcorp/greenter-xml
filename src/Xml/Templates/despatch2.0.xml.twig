@@ -239,9 +239,7 @@
           {#          {% if envio.partida.numRucAsociado %}#}
           {#            <cbc:AddressTypeCode listID="">{{ envio.partida.numRucAsociado }}</cbc:AddressTypeCode>#}
           {#          {% endif %}#}
-          {% if emp.ruc %}
-            <cbc:AddressTypeCode listID="{{ emp.ruc }}" listAgencyName="PE:SUNAT" listName="Establecimientos anexos">{{ envio.partida.codigoEstablecimientoPunto }}</cbc:AddressTypeCode>
-          {% endif %}
+          <cbc:AddressTypeCode listID="{{ envio.partida.numRucAsociado }}" listAgencyName="PE:SUNAT" listName="Establecimientos anexos">{{ envio.partida.codigoEstablecimientoPunto }}</cbc:AddressTypeCode>
           <cac:AddressLine>
             <cbc:Line>{{ envio.partida.direccion }}</cbc:Line>
           </cac:AddressLine>
