@@ -33,12 +33,14 @@
             <cbc:ID>{{ doc.compra }}</cbc:ID>
         </cac:OrderReference>
     {% endif %}
+    {% if doc.numDocfectado %}
     <cac:BillingReference>
         <cac:InvoiceDocumentReference>
             <cbc:ID>{{ doc.numDocfectado }}</cbc:ID>
             <cbc:DocumentTypeCode>{{ doc.tipDocAfectado }}</cbc:DocumentTypeCode>
         </cac:InvoiceDocumentReference>
     </cac:BillingReference>
+    {% endif %}
     {% if doc.guias %}
         {% for guia in doc.guias %}
             <cac:DespatchDocumentReference>
