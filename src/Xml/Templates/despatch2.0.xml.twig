@@ -195,13 +195,13 @@
                 {% endif %}
               </cac:PartyLegalEntity>
             {% endif %}
-  {#          {% if envio.entEmisoraTraslado %}#}
-  {#            <cac:AgentParty>#}
-  {#              <cac:PartyLegalEntity>#}
-  {#                <cbc:CompanyID schemeID="{{ envio.entEmisoraTraslado }}" schemeName="Entidad Autorizadora" schemeAgencyName="PE:SUNAT">{{ envio.numAutorizacionTraslado }}</cbc:CompanyID>#}
-  {#              </cac:PartyLegalEntity>#}
-  {#            </cac:AgentParty>#}
-  {#          {% endif %}#}
+            {% if envio.entEmisoraTraslado %}
+              <cac:AgentParty>
+                <cac:PartyLegalEntity>
+                  <cbc:CompanyID schemeID="{{ envio.entEmisoraTraslado }}" schemeName="Entidad Autorizadora" schemeAgencyName="PE:SUNAT">{{ envio.numAutorizacionTraslado }}</cbc:CompanyID>
+                </cac:PartyLegalEntity>
+              </cac:AgentParty>
+            {% endif %}
   {#        </cac:CarrierParty>#}
   {#				<cac:CarrierParty>#}
   {#					<cac:PartyIdentification>#}
