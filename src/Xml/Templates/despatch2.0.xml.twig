@@ -101,7 +101,7 @@
 	{% set envio = doc.envio %}
 	<cac:Shipment>
 		<cbc:ID>SUNAT_Envio</cbc:ID>
-		<cbc:HandlingCode listAgencyName="PE:SUNAT" listName="Motivo de traslado" listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogoD05">{{ envio.codTraslado }}</cbc:HandlingCode>
+		<cbc:HandlingCode listAgencyName="PE:SUNAT" listName="Motivo de traslado" listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo20">{{ envio.codTraslado }}</cbc:HandlingCode>
     {% if envio.desTraslado %}
       <cbc:HandlingInstructions>{{ envio.desTraslado }}</cbc:HandlingInstructions>
     {% endif %}
@@ -289,7 +289,7 @@
             {% endfor %}
             {% if envio.entidadEmidAutoEspecial %}
               <cac:ShipmentDocumentReference>
-                <cbc:ID schemeID="{{ envio.codigoEntidadEmisora }}" schemeName="Entidad Autorizador" schemeAgencyName="PE:SUNAT">{{ envio.entidadEmidAutoEspecial }}</cbc:ID>
+                <cbc:ID schemeID="{{ envio.codigoEntidadEmisora }}" schemeName="Entidad Autorizadora" schemeAgencyName="PE:SUNAT">{{ envio.entidadEmidAutoEspecial }}</cbc:ID>
               </cac:ShipmentDocumentReference>
             {% endif %}
           </cac:TransportEquipment>
