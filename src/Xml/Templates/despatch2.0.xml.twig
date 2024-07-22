@@ -218,7 +218,7 @@
       <cac:DeliveryAddress>
         <cbc:ID schemeName="Ubigeos" schemeAgencyName="PE:INEI">{{ envio.llegada.ubigueo }}</cbc:ID>
         {#				<cbc:StreetName>{{ envio.llegada.direccion }}</cbc:StreetName>#}
-        {% if envio.llegada.numRucAsociado %}
+        {% if envio.llegada.codigoEstablecimientoPunto %}
           <cbc:AddressTypeCode listID="{{ envio.llegada.numRucAsociado }}" listAgencyName="PE:SUNAT" listName="Establecimientos anexos">{{ envio.llegada.codigoEstablecimientoPunto }}</cbc:AddressTypeCode>
         {% endif %}
         <cac:AddressLine>
@@ -239,7 +239,9 @@
           {#          {% if envio.partida.numRucAsociado %}#}
           {#            <cbc:AddressTypeCode listID="">{{ envio.partida.numRucAsociado }}</cbc:AddressTypeCode>#}
           {#          {% endif %}#}
-          <cbc:AddressTypeCode listID="{{ envio.partida.numRucAsociado }}" listAgencyName="PE:SUNAT" listName="Establecimientos anexos">{{ envio.partida.codigoEstablecimientoPunto }}</cbc:AddressTypeCode>
+          {% if envio.partida.codigoEstablecimientoPunto %}
+            <cbc:AddressTypeCode listID="{{ envio.partida.numRucAsociado }}" listAgencyName="PE:SUNAT" listName="Establecimientos anexos">{{ envio.partida.codigoEstablecimientoPunto }}</cbc:AddressTypeCode>
+          {% endif %}
           <cac:AddressLine>
             <cbc:Line>{{ envio.partida.direccion }}</cbc:Line>
           </cac:AddressLine>
