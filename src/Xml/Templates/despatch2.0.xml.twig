@@ -27,7 +27,7 @@
       <cbc:DocumentType>{{ doc.relDoc.codTipoDoc }}</cbc:DocumentType>
       <cac:IssuerParty>
         <cac:PartyIdentification>
-          <cbc:ID schemeID="{{ emp.tipoDoc }}" schemeAgencyName="PE:SUNAT" schemeName="Documento de Identidad" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">{{ emp.ruc }}</cbc:ID>
+          <cbc:ID schemeID="{{ emp.tipoDoc }}" schemeAgencyName="PE:SUNAT" schemeName="Documento de Identidad" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">{{ doc.adrTerceroRuc }}</cbc:ID>
         </cac:PartyIdentification>
       </cac:IssuerParty>
     </cac:AdditionalDocumentReference>
@@ -256,6 +256,20 @@
             </cac:LocationCoordinate>
           {% endif %}
         </cac:DespatchAddress>
+          {% if doc.remitenteNumeroDocumento and doc.remitenteRazonSocial %}
+              <DespatchParty>
+                  <PartyIdentification>
+                      <ID schemeID="6" schemeName="Documento de Identidad" schemeAgencyName="PE:SUNAT" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">
+                          {{ doc.remitenteNumeroDocumento }}
+                      </ID>
+                  </PartyIdentification>
+                  <PartyLegalEntity>
+                      <RegistrationName>
+                          {{ doc.remitenteRazonSocial }}
+                      </RegistrationName>
+                  </PartyLegalEntity>
+              </DespatchParty>
+          {% endif %}
       </cac:Despatch>
 		</cac:Delivery>
     {% if envio.numPlacaVehiculo %}
