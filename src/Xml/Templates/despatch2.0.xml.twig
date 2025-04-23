@@ -129,13 +129,15 @@
             <cac:TransitPeriod>
                 <cbc:StartDate>{{ envio.fecTraslado|date('Y-m-d') }}</cbc:StartDate>
             </cac:TransitPeriod>
-            {% if envio.numMTCTraslado and doc.esGuiaTransportista %}
-                <cac:CarrierParty>
-                    <cac:PartyLegalEntity>
-                        <cbc:CompanyID>{{ envio.numMTCTraslado }}</cbc:CompanyID>
-                    </cac:PartyLegalEntity>
-                </cac:CarrierParty>
-                {% if envio.transportista %}
+            {% if doc.esGuiaTransportista %}
+                {% if envio.numMTCTraslado %}
+                    <cac:CarrierParty>
+                        <cac:PartyLegalEntity>
+                            <cbc:CompanyID>{{ envio.numMTCTraslado }}</cbc:CompanyID>
+                        </cac:PartyLegalEntity>
+                    </cac:CarrierParty>
+                {% endif %}
+                {% if envio.transportista and envio.transportista.nameChofer%}
                     <cac:DriverPerson>
                         <cbc:ID schemeID="{{ envio.transportista.choferTipoDoc }}" schemeName="Documento de Identidad" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06" schemeAgencyName="PE:SUNAT">{{ envio.transportista.choferDoc }}</cbc:ID>
                         {% if envio.transportista.nameChofer %}
@@ -155,6 +157,7 @@
                     </cac:DriverPerson>
                 {% endif %}
             {% endif %}
+
             {% if envio.transportista %}
                 {% if envio.modTraslado == "2" %}
                     <cac:DriverPerson>
