@@ -27,7 +27,7 @@
             <cbc:DocumentType>{{ doc.relDoc.codTipoDoc }}</cbc:DocumentType>
             <cac:IssuerParty>
                 <cac:PartyIdentification>
-                    <cbc:ID schemeID="{{ emp.tipoDoc }}" schemeAgencyName="PE:SUNAT" schemeName="Documento de Identidad" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">{{ doc.adrTerceroRuc }}</cbc:ID>
+                    <cbc:ID schemeID="6" schemeAgencyName="PE:SUNAT" schemeName="Documento de Identidad" schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">{{ doc.relDoc.rucEmisor }}</cbc:ID>
                 </cac:PartyIdentification>
             </cac:IssuerParty>
         </cac:AdditionalDocumentReference>
